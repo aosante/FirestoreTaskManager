@@ -4,17 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule} from 'angularfire2/firestore'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import { ItemsComponent } from './items/items.component';
 
-import { ItemService } from './services/item.service';
+import { TaskService } from './services/task.service';
+import { TasksComponent } from './task-items/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,8 @@ import { ItemService } from './services/item.service';
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
-    ItemService
+    TaskService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })
