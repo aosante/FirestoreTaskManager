@@ -1,3 +1,10 @@
-<p>
-  tasks works!
-</p>
+<div *ngIf="tasks?.length > 0; else noTasks">
+  <ul *ngFor="let task of tasks" class="task-list">
+    <li class="task"><strong>{{task.title}}: </strong>{{task.description}}</li>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <hr>
+  <h4>There are no tasks to list</h4>
+</ng-template>
