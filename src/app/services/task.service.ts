@@ -13,18 +13,23 @@ export class TaskService {
   tasks: Observable<Task[]>;
   
   constructor(public db: AngularFirestore) {
+    this.taskCollection = this.db.collection('tasks');
+
     //this returns the collection as an observable
     // this.tasks = this.db.collection('tasks').valueChanges();
-    this.tasks = this.db.collection('tasks').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
+    this.tasks = this.taskCollection.snapshotChanges().pipe(map(changes => changes.map(a => {
         const data = a.payload.doc.data() as Task;
         data.id = a.payload.doc.id;
         return data;
       })
-    }))
+    ))
    }
 
    getTasks() {
      return this.tasks;
+   }
+
+   addTask(task: Task) {
+    this.taskCollection.add(task);
    }
 }

@@ -2,11 +2,11 @@
   <div class="card">
     <form (ngSubmit)="onSubmit()" class="form col-1">
       <div class="row col-1 input-field">
-        <input type="text" placeholder="Add title" [(ngModel)]="item.title" name="title">
+        <input type="text" placeholder="Add title" [(ngModel)]="task.title" name="title">
         <label>Add task title</label>
       </div>
       <div class="row col-1 input-field">
-        <input type="text" placeholder="Add description" [(ngModel)]="item.description" name="description">
+        <input type="text" placeholder="Add description" [(ngModel)]="task.description" name="description">
         <label>Add task description</label>
       </div>
       <button type="submit" class="btn">Submit</button>
