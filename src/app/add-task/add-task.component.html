@@ -1,15 +1,13 @@
 <div class="form-container">
-  <div class="card">
     <form (ngSubmit)="onSubmit()" class="form col-1">
-      <div class="row col-1 input-field">
-        <input type="text" placeholder="Add title" [(ngModel)]="task.title" name="title">
-        <label>Add task title</label>
+      <div class="input-field input1">
+          <label>Task</label>
+        <input class="input" type="text" placeholder="Add title" [(ngModel)]="task.title" name="title">
       </div>
-      <div class="row col-1 input-field">
-        <input type="text" placeholder="Add description" [(ngModel)]="task.description" name="description">
-        <label>Add task description</label>
+      <div class="input-field input2">
+        <label>Description</label>
+        <input class="input" type="text" placeholder="Add description" [(ngModel)]="task.description" name="description">
       </div>
       <button type="submit" class="btn">Submit</button>
     </form>
-  </div>
 </div>

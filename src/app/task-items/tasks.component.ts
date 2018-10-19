@@ -10,6 +10,8 @@ import { Task } from '../models/tasks';
 export class TasksComponent implements OnInit {
 
   tasks: Task[];
+  editState: boolean = false;
+  taskEdit: Task;
 
   constructor(private task: TaskService) {
 
@@ -18,7 +20,29 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.task.getTasks().subscribe(tasks => {
       this.tasks = tasks
-    })
+    });
+  }
+
+  deleteTask(e, task: Task) {
+    this.clearState();
+    this.task.deleteTask(task);
+  }
+
+  editTask(e, item: Task) { 
+    this.editState = true;
+    this.taskEdit = item;
+
+  }
+
+  updateTask(task: Task) {
+    this.task.updateTask(task);
+    this.clearState();
+
+  }
+
+  clearState() {
+    this.editState = false;
+    this.taskEdit = null;
   }
 
 }
