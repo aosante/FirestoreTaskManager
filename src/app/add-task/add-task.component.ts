@@ -8,23 +8,22 @@ import { Task } from '../models/tasks';
   styleUrls: ['./add-task.component.sass']
 })
 export class AddTaskComponent implements OnInit {
-
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
   task: Task = {
     title: '',
     description: ''
-  }
+  };
 
-  ngOnInit() {
-  }
+  test: boolean;
+
+  ngOnInit() {}
 
   onSubmit() {
-    if(this.task.title != '' && this.task.description != '') {
+    if (this.task.title != '' && this.task.description != '') {
       this.taskService.addTask(this.task);
-      this.task.title = ''
-      this.task.description = ''
+      this.task.title = '';
+      this.task.description = '';
     }
   }
-
 }

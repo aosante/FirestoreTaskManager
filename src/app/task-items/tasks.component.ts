@@ -12,6 +12,7 @@ export class TasksComponent implements OnInit {
   tasks: Task[];
   editState: boolean = false;
   taskEdit: Task;
+  completedState: boolean = false;
 
   constructor(private task: TaskService) {
 

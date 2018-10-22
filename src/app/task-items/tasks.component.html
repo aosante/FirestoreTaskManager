@@ -1,9 +1,8 @@
-<div *ngIf="tasks?.length > 0; else noTasks">
+<div *ngIf="tasks?.length > 0 && !completedState; else noTasks">
 
   <ul *ngFor="let task of tasks" class="task-list">
-    <li class="task"><strong>{{task.title}} => </strong>{{task.description}} <a
-        href="#"><i (click)="editTask($event, task)" class="fa fa-pencil-square-o"></i><i (click)="clearState()" class="fa fa-compress"
-          *ngIf="editState && taskEdit.id == task.id"></i></a>
+    <li class="task"><strong>{{task.title}} => </strong>{{task.description}} <a href="#"><i (click)="editTask($event, task)"
+          class="fa fa-pencil-square-o"></i><i (click)="clearState()" class="fa fa-compress" *ngIf="editState && taskEdit.id == task.id"></i></a>
 
       <!-- edit section that's rendered when the edit icon is clicked  -->
       <div class="edit" *ngIf="editState && taskEdit.id == task.id">
@@ -28,6 +27,9 @@
 
 <!-- ng-template that is rendered when there's no items in the database -->
 <ng-template #noTasks>
-  <hr>
-  <h4>There are no tasks to list</h4>
+  <ul *ngFor="let task of tasks" class="task-list">
+    <li class="task" *ngIf="task.completed == true"><strong>{{task.title}} => </strong>{{task.description}} <a href="#"><i
+          (click)="editTask($event, task)" class="fa fa-pencil-square-o"></i><i (click)="clearState()" class="fa fa-compress"
+          *ngIf="editState && taskEdit.id == task.id"></i></a></li>
+  </ul>
 </ng-template>
