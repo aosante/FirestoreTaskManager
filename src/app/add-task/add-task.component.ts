@@ -12,18 +12,38 @@ export class AddTaskComponent implements OnInit {
 
   task: Task = {
     title: '',
-    description: ''
+    description: '',
+    completed: false
   };
 
-  test: boolean;
+  completedState: boolean = false;
+  completedBtnName: String = 'Completed tasks';
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.taskService.completedState.subscribe(
+      state => (this.completedState = state)
+    );
+  }
 
   onSubmit() {
+    // console.log(this.completedState);
     if (this.task.title != '' && this.task.description != '') {
       this.taskService.addTask(this.task);
       this.task.title = '';
       this.task.description = '';
+    }
+  }
+
+  showCompleted() {
+    if (
+      this.completedState == false &&
+      this.completedBtnName == 'Completed tasks'
+    ) {
+      this.taskService.toggleCompleted(true);
+      this.completedBtnName = 'Tasks';
+    } else {
+      this.taskService.toggleCompleted(false);
+      this.completedBtnName = 'Completed tasks';
     }
   }
 }

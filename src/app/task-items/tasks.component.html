@@ -1,8 +1,9 @@
 <div *ngIf="tasks?.length > 0 && !completedState; else noTasks">
 
   <ul *ngFor="let task of tasks" class="task-list">
-    <li class="task"><strong>{{task.title}} => </strong>{{task.description}} <a href="#"><i (click)="editTask($event, task)"
-          class="fa fa-pencil-square-o"></i><i (click)="clearState()" class="fa fa-compress" *ngIf="editState && taskEdit.id == task.id"></i></a>
+    <li class="task" *ngIf="task.completed == false" (dblclick)="completeTask(task)"><strong>{{task.title}} => </strong>{{task.description}}
+      <a href="#"><i class="fa fa-check" (click)="completeTask(task)"></i><i (click)="editTask($event, task)" class="fa fa-pencil-square-o"></i><i
+          (click)="clearState()" class="fa fa-compress" *ngIf="editState && taskEdit.id == task.id"></i></a>
 
       <!-- edit section that's rendered when the edit icon is clicked  -->
       <div class="edit" *ngIf="editState && taskEdit.id == task.id">
@@ -29,7 +30,6 @@
 <ng-template #noTasks>
   <ul *ngFor="let task of tasks" class="task-list">
     <li class="task" *ngIf="task.completed == true"><strong>{{task.title}} => </strong>{{task.description}} <a href="#"><i
-          (click)="editTask($event, task)" class="fa fa-pencil-square-o"></i><i (click)="clearState()" class="fa fa-compress"
-          *ngIf="editState && taskEdit.id == task.id"></i></a></li>
+          class="fa fa-trash" (click)="deleteTask($event, task)"></i><i class="fa fa-arrow-left uncheck-task" (click)="unComplete(task)"></i></a></li>
   </ul>
 </ng-template>

@@ -23,7 +23,16 @@
         position: relative
         float: right
         margin-left: .5em
-        color: $secondary
+        color: $secondary        
+
+        &:hover
+            transform: scale(1.1)
+            color: $text-color
+            transition: all 150ms ease-in-out
+
+    i.fa-trash
+        &:hover
+            color: red
 
     .edit
         margin-top: 1em

@@ -5,8 +5,9 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Task } from '../models/tasks';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CompileTemplateMetadata } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class TaskService {
   taskCollection: AngularFirestoreCollection<Task>;
   tasks: Observable<Task[]>;
   taskDoc: AngularFirestoreDocument<Task>;
-  completed: boolean;
+  private completed = new BehaviorSubject<boolean>(false); //false is the default value
+  completedState = this.completed.asObservable();
 
   constructor(public db: AngularFirestore) {
     this.taskCollection = this.db.collection('tasks', ref =>
@@ -55,8 +57,17 @@ export class TaskService {
     this.taskDoc.update(task);
   }
 
-  showCompleted() {
-    this.completed = true;
-    return this.completed;
+  completeTask(task: Task) {
+    this.taskDoc = this.db.doc(`tasks/${task.id}`);
+    this.taskDoc.update({ completed: true });
+  }
+
+  unCompleteTask(task: Task) {
+    this.taskDoc = this.db.doc(`tasks/${task.id}`);
+    this.taskDoc.update({ completed: false });
+  }
+
+  toggleCompleted(state: boolean) {
+    this.completed.next(state);
   }
 }

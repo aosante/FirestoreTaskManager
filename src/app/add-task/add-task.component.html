@@ -1,13 +1,17 @@
-<div class="form-container">
-    <form (ngSubmit)="onSubmit()" class="form col-1">
-      <div class="input-field input1">
-          <label>Task</label>
-        <input class="input" type="text" placeholder="Add title" [(ngModel)]="task.title" name="title">
-      </div>
-      <div class="input-field input2">
-        <label>Description</label>
-        <input class="input" type="text" placeholder="Add description" [(ngModel)]="task.description" name="description">
-      </div>
-      <button type="submit" class="btn">Submit</button>
-    </form>
+<div class="form-container animated rollIn">
+  <form (ngSubmit)="onSubmit()" class="form col-1">
+    <div class="input-field input1">
+      <label>Task</label>
+      <input class="input" type="text" placeholder="Add title" [(ngModel)]="task.title" name="title">
+    </div>
+    <div class="input-field input2">
+      <label>Description</label>
+      <input class="input" type="text" placeholder="Add description" [(ngModel)]="task.description" name="description">
+    </div>
+    <button type="submit" class="btn">Submit</button>
+    <button class="btn btn-completed" (click)="showCompleted()">{{completedBtnName}}</button>
+    <div class="message">
+      <p>*You can double-click on tasks to mark them as complete too</p>
+    </div>
+  </form>
 </div>
