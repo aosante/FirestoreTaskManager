@@ -1,0 +1,46 @@
+@import '../../sass/variables'
+    
+#main-footer
+    background-color: #000
+    display: grid
+    grid-template-columns: 2fr 1fr
+    
+    #media-icons
+        display: grid
+        height: 10vh
+        padding-left: 8em
+        grid-column: 1 / 2
+        display: flex
+        align-items: center
+
+        a
+            list-style-type: none
+            text-decoration: none
+            color: $text-color
+            margin-left: 1em
+
+            li
+                margin: 0
+                padding: 0
+                display: inline-block
+
+            i
+                font-size: 1.4em
+
+                &:hover
+                    transform: scale(1.1)
+                    opacity: .8
+
+    .author
+        color: red
+        position: relative
+        right: 0
+        grid-column: 2 / 4
+        display: flex
+        align-items: center
+        color: #eaeaea
+        padding-left: 2em
+
+        span
+            color: $secondary
+            margin-left: .4em
