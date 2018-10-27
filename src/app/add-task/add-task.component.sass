@@ -9,12 +9,16 @@
     box-shadow: 0 0 5px #fff
     margin-top: 7em
     border-radius: 5px
+    @media(max-width: 680px)
+        margin-top: 10em
 
     .form
         display: grid
         grid-template-rows: 1fr 1fr
         grid-column-gap: 2em
         color: $text-color
+        @media(max-width: 680px)
+            grid-template-rows: 1fr 1fr
 
         .message
             font-size: .6em
@@ -33,6 +37,8 @@
                 display: block
                 margin-bottom: 1em
                 font-size: 1.5em 
+                @media(max-width: 680px) 
+                    font-size: 1.2em
 
             .input
                 background-color: transparent
@@ -43,6 +49,8 @@
                 outline: 0
                 border-bottom: 2px solid #fff
                 width: 100%
+                @media(max-width: 680px) 
+                    font-size: 1em
 
         .btn
             border: none
@@ -59,6 +67,8 @@
             padding: 0
             color: $text-color
             outline: none
+            @media(max-width: 1060px)
+                font-size: .6em
 
             &:hover
                 transform: scale(1.05)
