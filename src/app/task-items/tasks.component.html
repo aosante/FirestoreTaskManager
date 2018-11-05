@@ -4,8 +4,9 @@
     <li class="task" *ngIf="task.completed == false" (dblclick)="completeTask(task)">
       <div class="task-wrapper"><strong>{{task.title}} => </strong>{{task.description}}</div>
       <div>
-        <a href="#"><i class="fa fa-check" (click)="completeTask(task)"></i><i (click)="editTask($event, task)" class="fa fa-pencil-square-o"></i><i
-            (click)="clearState()" class="fa fa-compress" *ngIf="editState && taskEdit.id == task.id"></i></a></div>
+        <a href="#"><i class="fa fa-check unComplete" (click)="completeTask(task)"></i><i (click)="editTask($event, task)"
+            class="fa fa-pencil-square-o unComplete"></i><i (click)="clearState()" class="fa fa-compress unComplete"
+            *ngIf="editState && taskEdit.id == task.id"></i></a></div>
 
       <!-- edit section that's rendered when the edit icon is clicked  -->
       <div class="edit" *ngIf="editState && taskEdit.id == task.id">
