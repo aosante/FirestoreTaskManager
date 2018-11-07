@@ -18,7 +18,11 @@
         grid-column-gap: 2em
         color: $text-color
         @media(max-width: 680px)
-            grid-template-rows: 1fr 1fr
+            display: flex
+            flex-direction: column
+
+        .container
+            border: 2px solid red
 
         .message
             font-size: .6em
@@ -51,6 +55,7 @@
                 width: 100%
                 @media(max-width: 680px) 
                     font-size: 1em
+                    margin-bottom: 1em
 
         .btn
             border: none
@@ -68,7 +73,9 @@
             color: $text-color
             outline: none
             @media(max-width: 1060px)
-                font-size: .6em
+                font-size: .88em
+                padding: .2em
+                margin-top: 2.5em
 
             &:hover
                 transform: scale(1.05)
